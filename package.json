@@ -15,11 +15,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.15.4",
+    "express": "^4.16.0",
     "if-env": "^1.0.0",
     "node-env-run": "^2.0.1",
-    "twilio": "^3.6.6",
-    "snyk": "^1.69.0"
+    "twilio": "^3.17.1",
+    "snyk": "^1.114.0"
   },
   "snyk": true
 }
