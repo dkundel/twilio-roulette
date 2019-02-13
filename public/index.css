@@ -1,96 +1,60 @@
-* {
-  box-sizing: border-box;
-}
-
 html,
 body {
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  width: 100%;
-  font-family: 'Share Tech Mono', monospace;
-}
-
-.video-ratio {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-.video-ratio:before {
-  /* display: block;
-  content: '';
-  width: 100%;
-  padding-top: 75%; */
-}
-.video-ratio > .content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-#remote-media {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-}
-
-#remote-media video {
-  flex: 1;
-}
-
-#preview video {
-  width: 100%;
-}
-
-#preview {
-  position: absolute;
-  width: 25%;
-  bottom: 0;
-  right: 0;
-  border-left: 2px solid #555a72;
-  border-top: 2px solid #555a72;
-}
-
-#button-preview,
-#button-connect {
-  border: 0;
-  background: #f12545;
-  color: #fff;
   width: 100%;
   margin: 0;
-  padding: 10px 20px;
-  outline: 0;
-  cursor: pointer;
 }
 
-#button-preview:hover,
-#button-connect:hover {
-  background: rgb(240, 18, 53);
-}
-
-.center-wrapper {
+main {
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  text-align: center;
-  background: #0d112b;
-  color: #555a72;
-  font-size: 25px;
+  padding: 20px;
+  align-items: center;
+}
+
+main button {
+  width: 100%;
+  max-width: 800px;
+}
+
+.video {
+  border: 1px dashed #ddd;
+  width: 100%;
+  max-width: 800px;
+  margin: 0;
   padding: 20px;
 }
 
-#about {
-  font-family: 'Helvetica Neue', sans-serif;
-  text-align: center;
+.video p {
+  margin: 0;
 }
 
-#about h2 {
-  font-weight: 200;
+#local-media,
+#remote-media {
+  margin: 0;
+  padding: 0;
+  gap: 20px;
+  width: 100%;
+  min-height: 400px;
+  background-color: rgba(155, 77, 202, 0.1);
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 35px,
+    rgba(255, 255, 255, 0.5) 35px,
+    rgba(255, 255, 255, 0.5) 70px
+  );
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#local-media {
+  margin-bottom: 20px;
+}
+
+video {
+  width: 100%;
+  padding: 20px;
 }

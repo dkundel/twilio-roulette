@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Twilio Video Roulette</title>
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+    />
 
-<head>
-  <title>Twilio Video Roulette</title>
-  <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
-  <link href="/index.css" rel="stylesheet">
-</head>
+    <link
+      rel="stylesheet"
+      href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css"
+    />
 
-<body>
-  <button id="button-connect">Connect</button>
-  <div id="video-demo" class="video-ratio">
-    <div class="content">
-      <div class="center-wrapper">
-        <p>You are the only one in this room.</p>
+    <link
+      rel="stylesheet"
+      href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css"
+    />
+    <link href="/index.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <main>
+      <h1>Twilio Roulette</h1>
+      <button>Connect</button>
+      <div class="video">
+        <p>Your Name: <span id="local-name"></span></p>
+        <div id="local-media"></div>
+        <p>Their Name: <span id="remote-name"></span></p>
+        <div id="remote-media"></div>
       </div>
-    </div>
-    <div id="remote-media"></div>
-    <div id="preview">
-      <div id="local-media"></div>
-    </div>
-  </div>
-  <script src="//media.twiliocdn.com/sdk/js/video/v1/twilio-video.min.js"></script>
-  <script src="/main.js"></script>
-</body>
-
+    </main>
+    <script src="//media.twiliocdn.com/sdk/js/video/v1/twilio-video.min.js"></script>
+    <script src="/main.js"></script>
+  </body>
 </html>

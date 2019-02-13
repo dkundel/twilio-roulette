@@ -1,7 +1,9 @@
 let connected = false;
-let $localMedia = document.getElementById('local-media');
-let $remoteMedia = document.getElementById('remote-media');
-let $buttonConnect = document.getElementById('button-connect');
+let localMediaEl = document.getElementById('local-media');
+let remoteMediaEl = document.getElementById('remote-media');
+let buttonEl = document.querySelector('button');
+let localNameEl = document.getElementById('local-name');
+let remoteNameEl = document.getElementById('remote-name');
 
 function connectToRoom() {
   if (connected) {
@@ -11,25 +13,33 @@ function connectToRoom() {
   fetch('/token')
     .then(resp => resp.json())
     .then(({ token, room }) => {
-      Twilio.Video
-        .connect(token, { audio: false, video: true, name: room })
-        .then(room => {
-          connected = true;
-          room.localParticipant.tracks.forEach(track => {
-            $localMedia.appendChild(track.attach());
-          });
+      Twilio.Video.connect(token, {
+        audio: false,
+        video: true,
+        name: room,
+      }).then(room => {
+        connected = true;
+        localNameEl.innerText = room.localParticipant.identity;
+        room.localParticipant.tracks.forEach(track => {
+          localMediaEl.appendChild(track.attach());
+        });
 
-          room.participants.forEach(partcipant => {
-            partcipant.tracks.forEach(track => {
-              $remoteMedia.appendChild(track.attach());
-            });
-          });
-
-          room.on('trackAdded', track => {
-            $remoteMedia.appendChild(track.attach);
+        room.participants.forEach(participant => {
+          remoteNameEl.innerText = participant.identity;
+          participant.tracks.forEach(track => {
+            remoteMediaEl.appendChild(track.attach());
           });
         });
+
+        room.on('participantAdded', participant => {
+          remoteNameEl.innerText = participant.identity;
+        });
+
+        room.on('trackAdded', track => {
+          remoteMediaEl.appendChild(track.attach());
+        });
+      });
     });
 }
 
-$buttonConnect.addEventListener('click', connectToRoom);
+buttonEl.addEventListener('click', connectToRoom);

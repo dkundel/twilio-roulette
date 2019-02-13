@@ -1,15 +1,16 @@
 const path = require('path');
 const express = require('express');
+const randomUsername = require('sillyname');
 const AccessToken = require('twilio').jwt.AccessToken;
 const VideoGrant = AccessToken.VideoGrant;
-
-const randomUsername = require('./randos');
 
 // Substitute your Twilio AccountSid and ApiKey details
 const { TWILIO_ACCOUNT_SID, TWILIO_API_KEY, TWILIO_API_SECRET } = process.env;
 const PORT = process.env.PORT || 3000;
 
+const sessions = {};
 const app = express();
+app.use(require('./forceSsl').requireHTTPS);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/token', (req, res) => {
@@ -21,6 +22,8 @@ app.get('/token', (req, res) => {
   );
   const identity = randomUsername();
   const room = getRoomId();
+  sessions[room].push(identity);
+  console.log(`${room}: ${sessions[room].join(',')}`);
 
   // Set the Identity of this token
   accessToken.identity = identity;
@@ -50,6 +53,7 @@ function getRoomId() {
       .toString(36)
       .substr(2);
     queue.push(id);
+    sessions[id] = [];
     return id;
   }
 }
