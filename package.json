@@ -19,7 +19,7 @@
     "if-env": "^1.0.0",
     "node-env-run": "^2.0.1",
     "sillyname": "^0.1.0",
-    "snyk": "^1.230.5",
+    "snyk": "^1.290.1",
     "twilio": "^3.6.6"
   },
   "snyk": true
