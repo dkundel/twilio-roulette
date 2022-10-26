@@ -8,7 +8,7 @@
     "start:dev": "node-env-run -f .",
     "start:prod": "node .",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "snyk-protect": "snyk protect",
+    "snyk-protect": "snyk-protect",
     "prepare": "npm run snyk-protect"
   },
   "keywords": [],
@@ -19,8 +19,8 @@
     "if-env": "^1.0.0",
     "node-env-run": "^2.0.1",
     "sillyname": "^0.1.0",
-    "snyk": "^1.230.5",
-    "twilio": "^3.6.6"
+    "twilio": "^3.6.6",
+    "@snyk/protect": "latest"
   },
   "snyk": true
 }
