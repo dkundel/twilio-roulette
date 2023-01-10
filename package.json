@@ -17,7 +17,7 @@
   "dependencies": {
     "express": "^4.15.4",
     "if-env": "^1.0.0",
-    "node-env-run": "^2.0.1",
+    "node-env-run": "^4.0.0",
     "sillyname": "^0.1.0",
     "snyk": "^1.230.5",
     "twilio": "^3.6.6"
